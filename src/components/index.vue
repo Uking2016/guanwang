@@ -4,6 +4,7 @@
     <div class="header">
       <div class="header-content">
         <span>LOGO</span>
+        <div class="header-right-icon"></div>
         <div class="header-right">
           <div v-for="(item, index) in navArr" :key="index">
             {{item}}
@@ -25,9 +26,9 @@
         </div>
       </div>
       <div class="product">
-        <p class="product-title">PRODUCT.</p>
+        <p class="item-title">PRODUCT.</p>
+        <p class="item-title-sub">产品中心</p>
         <div>
-          <span>产品中心</span>
           <div class="product-type-right-wrap">
             <span :class="`product-type ${typeChooseIndex === index? 'active' : ''}`" v-for="(item, index) in productTypeArr" :key="index" @click="handleClickProType(index)">
               {{item}}
@@ -55,14 +56,14 @@
       </div>
     </div>
     <div class="about-us">
-      <div class="about-us-bg">
-        <div class="about-us-detail-wrap">
-          <div class="about-us-detail">
-            <img src="../assets/aboutusDetail.png"/>
-            <div>
-              <p>宝鸡市美诺装饰有限公司简介，由木纹砖领军品牌创始人所创立，团队拥有超过10年木纹砖品类运营经验，从研发生产、产品销售、经销提升、品牌维管等多方面引领行业发展。匠心的产品研发团队坚持每一片产品都使用优质原料，每一道工序坚持以最高标准执行；原产地坯料、意大利卡罗比亚釉料、常规墨水及各种工艺墨水......</p>
-              <span class="about-us-more">MORE</span>
-            </div>
+      <div class="about-us-bg">  
+      </div>
+      <div class="about-us-detail-wrap">
+        <div class="about-us-detail">
+          <img src="../assets/aboutusDetail.png"/>
+          <div>
+            <p>宝鸡市美诺装饰有限公司简介，由木纹砖领军品牌创始人所创立，团队拥有超过10年木纹砖品类运营经验，从研发生产、产品销售、经销提升、品牌维管等多方面引领行业发展。匠心的产品研发团队坚持每一片产品都使用优质原料，每一道工序坚持以最高标准执行；原产地坯料、意大利卡罗比亚釉料、常规墨水及各种工艺墨水......</p>
+            <span class="about-us-more">MORE</span>
           </div>
         </div>
       </div>
@@ -70,7 +71,7 @@
 
     <!--案例-->
     <div class="case">
-      <div class="case-row">
+      <!-- <div class="case-row"> -->
         <div class="case-col-2">
           <p class="case-title">CASE.</p>
           <p class="case-title-sub">经典案例</p>
@@ -80,8 +81,8 @@
           <p class="case-item-title">经典案例</p>
           <p class="case-item-desc">案例简介案例简介案例简介案例简介案例简介案例简介案例简介…</p>
         </div>
-      </div>
-      <div class="case-row">
+      <!-- </div>
+      <div class="case-row"> -->
         <div class="case-col-2">
           <img src="../assets/row-2-1.png"/>
         </div>
@@ -92,8 +93,8 @@
         <div>
          <img src="../assets/row-2-3.png"/>
         </div>
-      </div>
-      <div class="case-row">
+      <!-- </div>
+      <div class="case-row"> -->
         <div class="case-item">
           <p class="case-item-title">经典案例</p>
           <p class="case-item-desc">案例简介案例简介案例简介案例简介案例简介案例简介案例简介…</p>
@@ -108,7 +109,7 @@
           <p class="case-item-title">经典案例</p>
           <p class="case-item-desc">案例简介案例简介案例简介案例简介案例简介案例简介案例简介…</p>
         </div>
-      </div>  
+      <!-- </div>   -->
     </div>
     <div class="more-product"><span>更多</span><img src="../assets/more.png"/></div>
 
@@ -126,7 +127,7 @@
             <!-- <p class="group-item-desc">室内设计师室内设计师室内设计师</p> -->
           </div>
         </div>
-        <div class="team-group-item">
+        <div class="team-group-item team-group-item-reverse">
           <div class="group-item-detail">
             <p class="group-item-name">设计师姓名</p>
             <p class="group-item-title">室内设计师</p>
@@ -142,7 +143,7 @@
             <!-- <p class="group-item-desc">室内设计师室内设计师室内设计师</p> -->
           </div>
         </div>
-        <div class="team-group-item">
+        <div class="team-group-item team-group-item-reverse">
           <div class="group-item-detail">
             <p class="group-item-name">设计师姓名</p>
             <p class="group-item-title">室内设计师</p>
@@ -202,14 +203,14 @@
         </div>
         <div>
           <p>XXXX装修公司</p>
-          <p>地址：</p>
-          <p>电话</p>
-          <p>传真：</p>
+          <p>地址：圣诞节反馈哈是对方拉黑分段函数</p>
+          <p>电话：020-86232323</p>
+          <p>传真：0899-12212323</p>
         </div>
         <div>
-          <p>邮箱：</p>
-          <p>手机</p>
-          <p>邮箱：</p>
+          <p>邮箱：12312312312@163.com</p>
+          <p>手机：12121231231</p>
+          <p>邮箱：1231233131321</p>
         </div>
         <div>
           <div class="qr-code">二维码</div>
@@ -253,6 +254,9 @@ export default {
   .header-right{
     float: right;
   }
+  .header-right-icon{
+    display: none;
+  }
   .header-right div, .header-content span{
     display: inline-block;
     font-size: 15px;
@@ -264,6 +268,8 @@ export default {
     width: 100%;
     height: 918px;
   }
+
+  /*banner下面的类型*/
   .content{
     position: relative;
     width: 1200px;
@@ -286,7 +292,7 @@ export default {
   .type-item-text{
     font-size: 16px;
     line-height: .6em;
-	  color:#000;
+color:#000;
   }
   .type-item-desc{
     font-size: 12px;
@@ -359,7 +365,7 @@ export default {
   }
   .about-us-detail-wrap{
     width: 1100px;
-    margin: 0 auto;
+    margin: -500px auto 0;
     padding: 51px 48px 50px 51px;
   }
   .about-us-detail{
@@ -367,8 +373,13 @@ export default {
     background-color: #fff;
     margin-top: 306px;
     display: flex;
+    flex-wrap: wrap;
+  }
+  .about-us-detail div{
+    flex: 2;
   }
   .about-us-detail img{
+    flex: 1;
     margin-right: 43px;
   }
   .about-us-detail p{
@@ -383,28 +394,29 @@ export default {
     border-radius: 19px;
     color: #fff;
   }
+
+
+  /* 案例样式 */
   .case{
     width: 1200px;
     margin: 257px auto 0;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
   }
-  .case-row{
-    display: flex;
-    flex-direction: row;
-    height: 296px;
-    /* align-items: center; */
-  }
-  .case-row div{
-    width: 300px;
+  .case div{
+    flex-basis: 300px;
+    flex-grow: 1;
+    flex-shrink: 1;
     height: 296px;
   }
-  .case-row div img{
+  .case div img{
     width: 100%;
     height: 100%;
   }
   .case-col-2{
-    width: 600px !important;
+    flex-basis: 600px !important;
+    flex-grow: 2  !important;
+    flex-shrink: 2  !important;
   }
   .case-title,.item-title{
     font-size: 53px;
@@ -446,17 +458,19 @@ export default {
   }
   .team-group{
     display: flex;
+    flex-wrap: wrap;
   }
   .team-group-item{
-    width: 300px;
+    flex-basis: 300px;
+    flex-grow: 1;
+    flex-shrink: 1;
     height: 400px;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
   }
   .team-group-item img{
     width: 100%;
-  }
-  .team-group-item .first-img{
-    height: auto;
   }
   .group-item-detail{
     font-size: 18px;
@@ -469,10 +483,12 @@ export default {
   /*news*/
   .news{
     display: flex;
+    flex-wrap: wrap;
   }
   .news-item{
     margin-right: 26px;
     flex: 1;
+    flex-basis: 300px;
   }
   .news-date{
     display: flex;
@@ -490,7 +506,6 @@ export default {
   }
   .news-title{
     font-size: 16px;
-    line-height: 90px;
     color: #2d2d2d;
   }
   .news-item .news-content{
@@ -523,15 +538,120 @@ export default {
     padding: 60px 55px;
     width: 1200px;
     margin: 0 auto;
-    display: flex;  
+    display: flex;
+    flex-wrap: wrap;
     font-size: 16px;
   }
   .footer div{
-    flex: 1;
+    flex-grow: 1;
+    flex-shrink: 1;
   }
   .qr-code{
     width: 168px;
     height: 168px;
     background-color: #ffffff;
   }
+  @media screen and (max-width: 1200px) {
+    /*移动端兼容*/
+    .index{
+      width: 100vw;
+      overflow: hidden;
+    }
+    .banner{
+      margin-top: 70px;
+    }
+    .banner img{
+      height: 40vh;
+    }
+    .content, .case, .about-us-detail-wrap, .group, .news, .footer-container{
+      width: 90vw;
+      margin: 0 auto;
+    }
+    .type{
+      flex-wrap: wrap;
+      justify-content: flex-start !important;
+    }
+    .type-item {
+      flex-basis: 5.3rem;
+      flex-grow: 0;
+    }
+    .header-right{
+      display: none;
+    }
+    .header, .header-content{
+      width: 100vw;
+    }
+    .header-right-icon{
+      display: block;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      padding: 6px 0;
+      border-top: 3px solid;
+      border-bottom: 3px solid ;
+      height: 3px;
+      width: 25px;
+      background: #808080;
+      color: #808080;
+      background-clip: content-box;
+    }
+
+    .product{
+      margin-top: 3rem;
+    }
+    .product-type-right-wrap{
+      float: none;
+      margin-top: 1em;
+    }
+    .product-type {
+      margin-left: 0;
+    }
+    .product-imgs{
+      margin-top: 1em;
+      column-count: 1;
+    }
+
+    .about-us-bg{
+      height: 17rem;
+      padding: 0;
+    }
+    .about-us-detail-wrap{
+      padding: 1rem;
+      margin-top: -9rem;
+    }
+    .about-us-detail{
+      padding: 1rem;
+      margin-top: 0;
+    }
+    .about-us-detail img{
+      width: 100%;
+    }
+    .team-group-item{
+      height: auto;
+    }
+    .team-group-item-reverse {
+      flex-direction: column-reverse;
+    }
+   .news-item{
+     padding-bottom: 2rem;
+   }
+   .news-center{
+     background: #fff;
+     padding: 0;
+   }
+   .news-center .news-title, .news-center .news-content{
+     color: #000;
+   }
+   .news-center .news-date{
+     color: #fff;
+     background-color: #2d2d2d;
+   }
+
+
+   .footer div{
+     flex-basis: 12rem;
+   }
+  }
+  
 </style>
