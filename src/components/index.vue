@@ -4,13 +4,14 @@
     <div class="header">
       <div class="header-content">
         <span>LOGO</span>
-        <div class="header-right-icon"></div>
-        <div class="header-right">
-          <div v-for="(item, index) in navArr" :key="index">
-            {{item}}
-          </div>
+        <div class="header-right-icon" @click="toggleNavShow"></div>
+        <div class="header-right">   
+          <a  v-for="(item, index) in navArr" :key="index" :href="`#${item.url}`">{{item.name}}</a>
         </div>
       </div>
+    </div>
+    <div :class="`nav-right ${hideNav?'hidden': ''}`">
+      <div class="nav-right-item" v-for="(item, index) in navArr" :key="index" @click="scrollTo($event,item.url)">{{item.name}}</div>
     </div>
      <!--banner-->
     <div class="banner">
@@ -18,14 +19,14 @@
     </div>
     <!--内容-->
     <div class="content">
-      <div class="type">
+      <div class="type" id="content">
         <div class="type-item" v-for="item in arr" :key="item">
           <img src="../assets/type1.png"/>
           <p class="type-item-text">111</p>
           <p class="type-item-desc">111</p>
         </div>
       </div>
-      <div class="product">
+      <div class="product" id="product">
         <p class="item-title">PRODUCT.</p>
         <p class="item-title-sub">产品中心</p>
         <div>
@@ -55,7 +56,7 @@
         <div class="more-product"><span>更多</span><img src="../assets/more.png"/></div>
       </div>
     </div>
-    <div class="about-us">
+    <div class="about-us" id="about-us">
       <div class="about-us-bg">  
       </div>
       <div class="about-us-detail-wrap">
@@ -70,7 +71,7 @@
     </div>
 
     <!--案例-->
-    <div class="case">
+    <div class="case" id="case">
       <!-- <div class="case-row"> -->
         <div class="case-col-2">
           <p class="case-title">CASE.</p>
@@ -114,7 +115,7 @@
     <div class="more-product"><span>更多</span><img src="../assets/more.png"/></div>
 
     <!--团队-->
-    <div class="group">
+    <div class="group" id="group">
       <p class="item-title">TEAM.</p>
       <p class="item-title-sub">团队</p>
 
@@ -154,7 +155,7 @@
       </div>
 
       <!-- 新闻资讯 -->
-      <div>
+      <div id="news">
         <p class="item-title">NEWS.</p>
         <p class="item-title-sub">新闻资讯</p>
 
@@ -195,7 +196,7 @@
     </div>
 
     <!--footer-->
-    <div class="footer">
+    <div class="footer" id="contact">
       <div class="footer-container">
         <div>
           <p>联系我们</p>
@@ -225,15 +226,33 @@ export default {
   data () {
     return {
       arr: [1, 2, 3, 4, 5],
-      navArr: ['首页', '关于', '产品', '案例', '团队', '新闻咨询', '联系我们'],
+      navArr: [
+        {name: '首页', url: 'content'},
+        {name: '关于', url: 'about-us'},
+        {name: '产品', url: 'product'},
+        {name: '案例', url: 'case'},
+        {name:'团队', url: 'group'},
+        {name:'新闻咨询', url: 'news'},
+        {name: '联系我们', url: 'contact'}],
       typeChooseIndex: 0,
-      productTypeArr: ['产品','产品3', '产品1', '产品1', '产品1']
+      productTypeArr: ['产品','产品3', '产品1', '产品1', '产品1'],
+      hideNav: false
     }
   },
   methods: {
     handleClickProType (index) {
       this.typeChooseIndex = index
-    }
+    },
+    toggleNavShow () {
+      console.log('hideNav', this.hideNav)
+      this.hideNav = !this.hideNav
+    },
+    scrollTo (event, eleId) {
+      let top = document.getElementById(eleId).offsetTop
+      let tar = event.target || event.srcElement
+      window.scrollTo(0,top)
+
+     }
   }
 }
 </script>
@@ -245,7 +264,7 @@ export default {
     top: 0;
     width: 100%;
     height: 93px;
-    background-color: rgba(248, 243, 236, .8);
+    background-color: rgba(248, 243, 236, 1);
   }
   .header-content{
     width: 1200px;
@@ -254,10 +273,20 @@ export default {
   .header-right{
     float: right;
   }
+  .nav-right{
+    display: none;
+  }
+  .hidden{
+    display: none !important;
+  }
+  .header-right a{
+    color: #000;
+    text-decoration: none;
+  }
   .header-right-icon{
     display: none;
   }
-  .header-right div, .header-content span{
+  .header-right a, .header-content span{
     display: inline-block;
     font-size: 15px;
     padding: 0 30px;
@@ -271,11 +300,11 @@ export default {
 
   /*banner下面的类型*/
   .content{
-    position: relative;
     width: 1200px;
     margin: 0 auto;
   }
   .content .type{
+    position: relative;
     display: flex;
     justify-content: center;
     text-align: center;
@@ -399,7 +428,7 @@ color:#000;
   /* 案例样式 */
   .case{
     width: 1200px;
-    margin: 257px auto 0;
+    margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
   }
@@ -556,6 +585,20 @@ color:#000;
     .index{
       width: 100vw;
       overflow: hidden;
+    }
+    .nav-right{
+      display: block;
+      position: fixed;
+      right: 0;
+      width: 100px;
+      bottom: 0;
+      top: 93px;
+      z-index: 1000;
+      background-color: rgba(248, 243, 236, .8);
+    }
+    .nav-right-item{
+      padding: 20px 10px;
+      text-align: center;
     }
     .banner{
       margin-top: 70px;
