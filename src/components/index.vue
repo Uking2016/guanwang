@@ -6,24 +6,24 @@
         <span>LOGO</span>
         <div class="header-right-icon" @click="toggleNavShow"></div>
         <div class="header-right">   
-          <a  v-for="(item, index) in navArr" :key="index" :href="`#${item.url}`">{{item.name}}</a>
+          <a v-for="(item, index) in navArr" :key="index" :href="`#${item.url}`">{{item.name}}</a>
         </div>
       </div>
     </div>
-    <div :class="`nav-right ${hideNav?'hidden': ''}`">
+    <div :class="`nav-right ${hideNav?'hidden': 'show'}`">
       <div class="nav-right-item" v-for="(item, index) in navArr" :key="index" @click="scrollTo($event,item.url)">{{item.name}}</div>
     </div>
      <!--banner-->
     <div class="banner">
-      <img src="../assets/banner.png"/>
+      <img v-lazy="bannerUrl"/>
     </div>
     <!--内容-->
     <div class="content">
       <div class="type" id="content">
-        <div class="type-item" v-for="item in arr" :key="item">
-          <img src="../assets/type1.png"/>
-          <p class="type-item-text">111</p>
-          <p class="type-item-desc">111</p>
+        <div class="type-item" v-for="(item,key) in type" :key="key">
+          <img v-lazy="item"/>
+          <p class="type-item-text">实惠</p>
+          <p class="type-item-desc">第一线师傅，费用低</p>
         </div>
       </div>
       <div class="product" id="product">
@@ -37,20 +37,8 @@
           </div>
         </div>
         <div class="product-imgs">
-          <div class="product-img-item">
-            <img  src="../assets/demo1.png"/>
-          </div>
-          <div class="product-img-item">
-            <img src="../assets/demo2.png"/>
-          </div>
-          <div class="product-img-item">
-            <img src="../assets/demo5.png"/>
-          </div>
-          <div class='product-img-item'>
-            <img src="../assets/demo4.png"/>
-          </div>
-          <div class="product-img-item">
-            <img src="../assets/demo3.png"/>
+          <div class="product-img-item" v-for="(item, key) in demo" :key="key">
+            <img  v-lazy="item"/>
           </div>
         </div>
         <div class="more-product"><span>更多</span><img src="../assets/more.png"/></div>
@@ -61,7 +49,7 @@
       </div>
       <div class="about-us-detail-wrap">
         <div class="about-us-detail">
-          <img src="../assets/aboutusDetail.png"/>
+          <img v-lazy="aboutusDetailUrl"/>
           <div>
             <p>宝鸡市美诺装饰有限公司简介，由木纹砖领军品牌创始人所创立，团队拥有超过10年木纹砖品类运营经验，从研发生产、产品销售、经销提升、品牌维管等多方面引领行业发展。匠心的产品研发团队坚持每一片产品都使用优质原料，每一道工序坚持以最高标准执行；原产地坯料、意大利卡罗比亚釉料、常规墨水及各种工艺墨水......</p>
             <span class="about-us-more">MORE</span>
@@ -74,10 +62,10 @@
     <div class="case" id="case">
       <!-- <div class="case-row"> -->
         <div class="case-col-2">
-          <p class="case-title">CASE.</p>
-          <p class="case-title-sub">经典案例</p>
+          <p class="item-title">CASE.</p>
+          <p class="item-title-sub">经典案例</p>
         </div>
-        <div><img src="../assets/row-1-3.png"/></div>
+        <div><img v-lazy="caseImgs.row13"/></div>
         <div class="case-item case-item-yellow">
           <p class="case-item-title">经典案例</p>
           <p class="case-item-desc">案例简介案例简介案例简介案例简介案例简介案例简介案例简介…</p>
@@ -85,14 +73,14 @@
       <!-- </div>
       <div class="case-row"> -->
         <div class="case-col-2">
-          <img src="../assets/row-2-1.png"/>
+          <img v-lazy="caseImgs.row21"/>
         </div>
         <div class="case-item">
           <p class="case-item-title">经典案例</p>
           <p class="case-item-desc">案例简介案例简介案例简介案例简介案例简介案例简介案例简介…</p>
         </div>
         <div>
-         <img src="../assets/row-2-3.png"/>
+         <img v-lazy="caseImgs.row23"/>
         </div>
       <!-- </div>
       <div class="case-row"> -->
@@ -101,10 +89,10 @@
           <p class="case-item-desc">案例简介案例简介案例简介案例简介案例简介案例简介案例简介…</p>
         </div>
         <div>
-          <img src="../assets/row-3-2.png"/>
+          <img v-lazy="caseImgs.row32"/>
         </div>
         <div>
-          <img src="../assets/row-3-3.png"/>
+          <img v-lazy="caseImgs.row33"/>
         </div>
         <div class="case-item">
           <p class="case-item-title">经典案例</p>
@@ -120,37 +108,13 @@
       <p class="item-title-sub">团队</p>
 
       <div class="team-group">
-        <div class="team-group-item">
-          <img src="../assets/group1.png" class="first-img"/>
-          <div class="group-item-detail">
+        <div class="team-group-item" v-for="(item, key) in group" :key="key">
+          <img v-lazy="item" class="first-img"/>
+          <div :class="key==='img2'||key==='img4'?'group-item-detail team-group-item-reverse' : 'group-item-detail'">
             <p class="group-item-name">设计师姓名</p>
             <p class="group-item-title">室内设计师</p>
             <!-- <p class="group-item-desc">室内设计师室内设计师室内设计师</p> -->
           </div>
-        </div>
-        <div class="team-group-item team-group-item-reverse">
-          <div class="group-item-detail">
-            <p class="group-item-name">设计师姓名</p>
-            <p class="group-item-title">室内设计师</p>
-            <!-- <p class="group-item-desc">室内设计师室内设计师室内设计师</p> -->
-          </div>
-          <img src="../assets/group2.png"/>
-        </div>
-        <div class="team-group-item">
-          <img src="../assets/group3.png"/>
-          <div class="group-item-detail">
-            <p class="group-item-name">设计师姓名</p>
-            <p class="group-item-title">室内设计师</p>
-            <!-- <p class="group-item-desc">室内设计师室内设计师室内设计师</p> -->
-          </div>
-        </div>
-        <div class="team-group-item team-group-item-reverse">
-          <div class="group-item-detail">
-            <p class="group-item-name">设计师姓名</p>
-            <p class="group-item-title">室内设计师</p>
-            <!-- <p class="group-item-desc">室内设计师室内设计师室内设计师</p> -->
-          </div>
-          <img src="../assets/group4.png"/>   
         </div>
       </div>
 
@@ -225,7 +189,34 @@
 export default {
   data () {
     return {
-      arr: [1, 2, 3, 4, 5],
+      type: {
+        img1: require('../assets/type1.png'),
+        img2: require('../assets/type2.png'),
+        img3: require('../assets/type3.png'),
+        img4: require('../assets/type4.png'),
+        img5: require('../assets/type1.png')
+      },
+      demo: {
+        img1: require('../assets/demo1.png'),
+        img2: require('../assets/demo2.png'),
+        img3: require('../assets/demo3.png'),
+        img4: require('../assets/demo4.png')
+      },
+      group: {
+        img1: require('../assets/group1.png'),
+        img2: require('../assets/group2.png'),
+        img3: require('../assets/group3.png'),
+        img4: require('../assets/group4.png')
+      },
+      aboutusDetailUrl: require('../assets/aboutusDetail.png'),
+      bannerUrl: require('../assets/banner.png'),
+      caseImgs: {
+        row13: require('../assets/row-1-3.png'),
+        row21: require('../assets/row-2-1.png'),
+        row23: require('../assets/row-2-3.png'),
+        row32: require('../assets/row-3-2.png'),
+        row33: require('../assets/row-3-3.png')
+      },
       navArr: [
         {name: '首页', url: 'content'},
         {name: '关于', url: 'about-us'},
@@ -236,7 +227,7 @@ export default {
         {name: '联系我们', url: 'contact'}],
       typeChooseIndex: 0,
       productTypeArr: ['产品','产品3', '产品1', '产品1', '产品1'],
-      hideNav: false
+      hideNav: true
     }
   },
   methods: {
@@ -244,14 +235,11 @@ export default {
       this.typeChooseIndex = index
     },
     toggleNavShow () {
-      console.log('hideNav', this.hideNav)
       this.hideNav = !this.hideNav
     },
     scrollTo (event, eleId) {
       let top = document.getElementById(eleId).offsetTop
-      let tar = event.target || event.srcElement
       window.scrollTo(0,top)
-
      }
   }
 }
@@ -278,6 +266,9 @@ export default {
   }
   .hidden{
     display: none !important;
+  }
+  .show{
+    display: block !important;
   }
   .header-right a{
     color: #000;
@@ -306,9 +297,9 @@ export default {
   .content .type{
     position: relative;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     text-align: center;
-    padding: 30px 40px;
+    padding: 30px 30px;
     margin-top: -81px;
     background-color: #ffffff;
     box-shadow: 0px 0px 20px 0px 
@@ -317,27 +308,19 @@ export default {
   .type-item{
     flex: 1;
     justify-content: center;
+    margin: 0 5px;
   }
   .type-item-text{
-    font-size: 16px;
-    line-height: .6em;
-color:#000;
+    font-size: 1rem;
+    color:#000;
   }
   .type-item-desc{
-    font-size: 12px;
-    line-height: .6em;
+    font-size: .75rem;
     color: #808080;
   }
   .product{
     margin-top: 114px;
    }
-  .product-title{
-    font-size: 47px;
-    color: #000;
-  }
-  .product-title::first-letter{
-    border-bottom: 2px solid #000;
-  }
   .product-type-right-wrap{
     float: right;
   }
@@ -374,7 +357,7 @@ color:#000;
     border-radius: 19px;
     text-align: center;
     line-height: 38px;
-    font-size: 14px;
+    font-size: .88rem;
   }
   .more-product span, .more-product img{
     display: inline-block;
@@ -447,14 +430,14 @@ color:#000;
     flex-grow: 2  !important;
     flex-shrink: 2  !important;
   }
-  .case-title,.item-title{
+  .item-title{
     font-size: 53px;
     color: #000;
     opacity: .8;
     margin-block-start: .5em;
     margin-block-end: .5em;
   }
-  .case-title::first-letter, .item-title::first-letter{
+  .item-title::first-letter{
     border-bottom: 2px solid #000;
   }
   .case-title-sub,.item-title-sub{
@@ -473,7 +456,7 @@ color:#000;
     background-color: #ffbc20;
   }
   .case-item-title{
-    font-size: 20px;
+    font-size: 1rem;
     line-height: 30px;
   }
   .case-item-desc{
@@ -502,7 +485,7 @@ color:#000;
     width: 100%;
   }
   .group-item-detail{
-    font-size: 18px;
+    font-size: 1rem;
     padding: 0 23px 0;
   }
   .group-item-detail p{
@@ -534,11 +517,10 @@ color:#000;
     opacity: 0.5;
   }
   .news-title{
-    font-size: 16px;
     color: #2d2d2d;
   }
   .news-item .news-content{
-    font-size: 14px;
+    font-size: .88rem;
     line-height: 29px;
     color: #2d2d2d;
     opacity: 0.5;
@@ -569,7 +551,6 @@ color:#000;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
-    font-size: 16px;
   }
   .footer div{
     flex-grow: 1;
@@ -586,14 +567,25 @@ color:#000;
       width: 100vw;
       overflow: hidden;
     }
+    /* 共用 */
+    .item-title{
+      font-size: 2rem;
+    }
+    .item-title-sub{
+      font-size: 1.2rem;
+    }
+    .header, .header-content span{
+      height: 60px;
+      line-height: 60px;
+    }
     .nav-right{
-      display: block;
       position: fixed;
       right: 0;
       width: 100px;
       bottom: 0;
-      top: 93px;
+      top: 60px;
       z-index: 1000;
+      color: #333;
       background-color: rgba(248, 243, 236, .8);
     }
     .nav-right-item{
@@ -601,9 +593,10 @@ color:#000;
       text-align: center;
     }
     .banner{
-      margin-top: 70px;
+      margin-top: 38px;
     }
     .banner img{
+      height: 400px;
       height: 40vh;
     }
     .content, .case, .about-us-detail-wrap, .group, .news, .footer-container{
@@ -611,12 +604,19 @@ color:#000;
       margin: 0 auto;
     }
     .type{
+      padding: 30px 40px;
       flex-wrap: wrap;
       justify-content: flex-start !important;
     }
-    .type-item {
-      flex-basis: 5.3rem;
-      flex-grow: 0;
+    .type-item-text{
+      font-size: .88rem !important;
+    }
+    .type-item-desc{
+      font-size: .75rem !important;
+    }
+    .type-item img{
+      width: 1.8rem;
+      height: 1.8rem;
     }
     .header-right{
       display: none;
@@ -630,11 +630,11 @@ color:#000;
       right: 0;
       top: 50%;
       transform: translate(-50%, -50%);
-      padding: 6px 0;
-      border-top: 3px solid;
-      border-bottom: 3px solid ;
-      height: 3px;
-      width: 25px;
+      padding: 4px 0;
+      border-top: 2px solid;
+      border-bottom: 2px solid ;
+      height: 2px;
+      width: 20px;
       background: #808080;
       color: #808080;
       background-clip: content-box;

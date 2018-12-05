@@ -5,8 +5,12 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import index from './components/index.vue'
-
+import VueLazyLoad from 'vue-lazyload'
+Vue.use(VueLazyLoad, {
+  preLoad: 1
+})
 export default {
   name: 'app',
   components: {
