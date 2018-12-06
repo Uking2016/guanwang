@@ -15,7 +15,7 @@
     </div>
      <!--banner-->
     <div class="banner">
-      <img v-lazy="bannerUrl"/>
+      <img v-lazy="bannerUrl" src="holder.js/1920x1145"/>
     </div>
     <!--内容-->
     <div class="content">
@@ -38,7 +38,7 @@
         </div>
         <div class="product-imgs">
           <div class="product-img-item" v-for="(item, key) in demo" :key="key">
-            <img  v-lazy="item"/>
+            <img  v-lazy="item" src="holder.js/570x380"/>
           </div>
         </div>
         <div class="more-product"><span>更多</span><img src="../assets/more.png"/></div>
@@ -565,14 +565,16 @@ export default {
     /*移动端兼容*/
     .index{
       width: 100vw;
+      font-size: .9rem;
       overflow: hidden;
     }
     /* 共用 */
     .item-title{
-      font-size: 2rem;
+      font-size: 1.8rem;
     }
     .item-title-sub{
-      font-size: 1.2rem;
+      text-indent: 0;
+      font-size: 1rem;
     }
     .header, .header-content span{
       height: 60px;
@@ -675,6 +677,9 @@ export default {
     }
     .team-group-item-reverse {
       flex-direction: column-reverse;
+    }
+    .group-item-name,.group-item-title,.group-item-detail{
+      text-align: center;
     }
    .news-item{
      padding-bottom: 2rem;
