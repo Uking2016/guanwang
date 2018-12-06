@@ -15,7 +15,7 @@
     </div>
      <!--banner-->
     <div class="banner">
-      <img v-lazy="bannerUrl" src="holder.js/1920x1145"/>
+      <img v-lazy="bannerUrl" src="https://fakeimg.pl/1920x1145/?text=WISEFAMILYS.COM"/>
     </div>
     <!--内容-->
     <div class="content">
@@ -38,7 +38,7 @@
         </div>
         <div class="product-imgs">
           <div class="product-img-item" v-for="(item, key) in demo" :key="key">
-            <img  v-lazy="item" src="holder.js/570x380"/>
+            <img  v-lazy="item" src="https://fakeimg.pl/570x380/?text=WISEFAMILYS.COM"/>
           </div>
         </div>
         <div class="more-product"><span>更多</span><img src="../assets/more.png"/></div>
