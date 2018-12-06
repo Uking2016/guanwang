@@ -685,7 +685,7 @@ export default {
      padding-bottom: 2rem;
    }
    .news-center{
-     background: #fff;
+     background: transparent;
      padding: 0;
    }
    .news-center .news-title, .news-center .news-content{
