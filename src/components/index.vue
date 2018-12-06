@@ -15,7 +15,7 @@
     </div>
      <!--banner-->
     <div class="banner">
-      <img v-lazy="bannerUrl" src="https://fakeimg.pl/1920x1145/?text=WISEFAMILYS.COM"/>
+      <img v-lazy="bannerUrl" src="https://fakeimg.pl/1920x1145/f8f3ec/?text=WISEFAMILYS.COM"/>
     </div>
     <!--内容-->
     <div class="content">
@@ -38,7 +38,7 @@
         </div>
         <div class="product-imgs">
           <div class="product-img-item" v-for="(item, key) in demo" :key="key">
-            <img  v-lazy="item" src="https://fakeimg.pl/570x380/?text=WISEFAMILYS.COM"/>
+            <img  v-lazy="item" src="https://fakeimg.pl/570x380/f8f3ec/?text=WISEFAMILYS.COM"/>
           </div>
         </div>
         <div class="more-product"><span>更多</span><img src="../assets/more.png"/></div>
@@ -49,7 +49,7 @@
       </div>
       <div class="about-us-detail-wrap">
         <div class="about-us-detail">
-          <img v-lazy="aboutusDetailUrl"/>
+          <img v-lazy="aboutusDetailUrl" src="https://fakeimg.pl/327x206/f8f3ec/?text=WISEFAMILYS.COM"/>
           <div>
             <p>宝鸡市美诺装饰有限公司简介，由木纹砖领军品牌创始人所创立，团队拥有超过10年木纹砖品类运营经验，从研发生产、产品销售、经销提升、品牌维管等多方面引领行业发展。匠心的产品研发团队坚持每一片产品都使用优质原料，每一道工序坚持以最高标准执行；原产地坯料、意大利卡罗比亚釉料、常规墨水及各种工艺墨水......</p>
             <span class="about-us-more">MORE</span>
@@ -65,7 +65,7 @@
           <p class="item-title">CASE.</p>
           <p class="item-title-sub">经典案例</p>
         </div>
-        <div><img v-lazy="caseImgs.row13"/></div>
+        <div><img v-lazy="caseImgs.row13" src="https://fakeimg.pl/468x334/f8f3ec/?text=WISEFAMILYS.COM"/></div>
         <div class="case-item case-item-yellow">
           <p class="case-item-title">经典案例</p>
           <p class="case-item-desc">案例简介案例简介案例简介案例简介案例简介案例简介案例简介…</p>
@@ -89,10 +89,10 @@
           <p class="case-item-desc">案例简介案例简介案例简介案例简介案例简介案例简介案例简介…</p>
         </div>
         <div>
-          <img v-lazy="caseImgs.row32"/>
+          <img v-lazy="caseImgs.row32" src="https://fakeimg.pl/468x334/f8f3ec/?text=WISEFAMILYS.COM"/>
         </div>
         <div>
-          <img v-lazy="caseImgs.row33"/>
+          <img v-lazy="caseImgs.row33" src="https://fakeimg.pl/468x334/f8f3ec/?text=WISEFAMILYS.COM"/>
         </div>
         <div class="case-item">
           <p class="case-item-title">经典案例</p>
@@ -557,9 +557,9 @@ export default {
     flex-shrink: 1;
   }
   .qr-code{
-    width: 168px;
-    height: 168px;
-    background-color: #ffffff;
+    width: 138px;
+    height: 138px;
+    background-color: #fff;
   }
   @media screen and (max-width: 1200px) {
     /*移动端兼容*/
